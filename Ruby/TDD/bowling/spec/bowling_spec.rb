@@ -1,5 +1,5 @@
 require "spec_helper"
-require_relative "lib/bowling"
+require_relative "../lib/bowling"
 
 RSpec.describe Bowling do
   context 'when game is started'

@@ -1,5 +1,5 @@
 require "spec_helper"
-require_relative "lib/frame"
+require_relative "../lib/frame"
 
 RSpec.describe Frame do
 
