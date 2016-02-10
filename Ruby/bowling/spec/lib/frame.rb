@@ -6,7 +6,7 @@ class Frame
   end
 
   def rolls
-    first
+    [first,second]
   end
 
   def open?
