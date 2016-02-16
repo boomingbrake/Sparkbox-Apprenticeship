@@ -5,6 +5,47 @@ require "./number_game"
 require "./shell_console"
 require "./randomizable"
 
+class RecordingConsole
+  attr_reader :last_asked
+  def ask(question)
+    @last_asked = question
+  end
+end
+
+class FakeConsole
+  attr_reader :last_putsed
+
+  def puts(message)
+    @last_putsed = message
+  end
+
+  def ask(question)
+    "Jimmy Johns"
+  end
+end
+
+class GameTest
+
+  def greet_asks_user_for_name
+    console = RecordingConsole.new
+    game = Game.new console
+
+    game.greet
+
+    expect(console.last_asked).to eq("Enter Name: ")
+  end
+
+  def says_hello_to_the_player
+    console = FakeConsole.new
+
+    game = Game.new(console)
+
+    game.greet
+
+    expect(console.last_putsed).to eq("Hello Jimmy Johns")
+  end
+end
+
 class Game
 
   attr_accessor :player_name
@@ -18,7 +59,7 @@ class Game
   # gets name and greets
   def greet
     self.player_name = console.ask "Enter Name: "
-    puts "Hello #{player_name}! ".colorize(:yellow)
+    console.puts "Hello #{player_name}! ".colorize(:yellow)
   end
 
   def choose_game

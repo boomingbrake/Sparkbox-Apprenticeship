@@ -4,7 +4,7 @@ def count_words(sentence)
   sentence_array.each do |n|
     counts[n] +=1
   end
-  counts
+  counts.sort_by {|word, count| count * -1} 
 end
 
 
