@@ -1,9 +1,9 @@
 require "colorize"
-require "./moo_oink"
-require "./name_game"
-require "./number_game"
-require "./shell_console"
-require "./randomizable"
+require_relative "moo_oink_game"
+require_relative "name_game"
+require_relative "number_game"
+require_relative "shell_console"
+require_relative "randomizable"
 
 
 class Game
@@ -19,7 +19,7 @@ class Game
   # gets name and greets
   def greet
     self.player_name = console.ask "Enter Name: "
-    console.puts "Hello #{player_name}! ".colorize(:yellow)
+    console.tell "Hello #{player_name}! "
   end
 
   def choose_game
@@ -44,6 +44,6 @@ class Game
 end
 
   # game play code below
-
-  game = Game.new
-  game.play
+  #
+  # game = Game.new
+  # game.play
