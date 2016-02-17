@@ -1,4 +1,5 @@
 require "./randomizable"
+
 # guess moo or oink
 class MooOink
   include Randomizable
@@ -19,9 +20,9 @@ class MooOink
     answer = moo_oink_game[random_number(1)]
 
     if choice.upcase == answer.upcase
-      puts "Way to go!".colorize(:green)
+      console.tell "Way to go!"
     else
-      puts "Sorry, the answer was #{answer}".colorize(:red)
+      console.tell "Sorry, the answer was #{answer}"
     end
   end
 end

@@ -1,6 +1,6 @@
 require_relative "randomizable"
 # guess moo or oink
-class MooOink
+class MooOinkGame
   include Randomizable
   attr_reader :console
 
@@ -19,9 +19,9 @@ class MooOink
     answer = moo_oink_game[random_number(1)]
 
     if choice.upcase == answer.upcase
-      console.tell("Way to go!").colorize(:green)
+      console.tell "Way to go!"
     else
-      console.tell("Sorry, the answer was #{answer}").colorize(:red)
+      console.tell "Sorry, the answer was #{answer}"
     end
   end
 end

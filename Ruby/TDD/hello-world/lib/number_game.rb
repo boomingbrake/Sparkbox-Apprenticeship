@@ -18,10 +18,10 @@ class NumberGame
     loop do
       choice = console.ask("Guess a number between 0 and 5: ")
       if choice.to_i == generated_number
-        console.tell("\nCORRECT!").colorize(:green)
+        console.tell "\nCORRECT!"
         break
       else
-        console.tell("\nTry again.").colorize(:red)
+        console.tell "\nTry again."
       end
     end
   end

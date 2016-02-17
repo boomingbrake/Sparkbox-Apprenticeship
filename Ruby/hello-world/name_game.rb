@@ -16,6 +16,6 @@ class NameGame
     choice = console.ask("What do you want to do with your name?\nA: uppercase\nB: reverse\nC: lowercase ").downcase
     name_choice ={"a" => 'upcase', "b" => 'reverse', "c" => 'downcase'}
 
-    puts player_name.send(name_choice[choice])
+    console.tell(player_name.send(name_choice[choice]))
   end
 end

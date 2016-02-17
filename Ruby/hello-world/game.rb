@@ -1,4 +1,3 @@
-require "colorize"
 require "./moo_oink"
 require "./name_game"
 require "./number_game"
@@ -19,7 +18,7 @@ class Game
   # gets name and greets
   def greet
     self.player_name = console.ask "Enter Name: "
-    console.puts "Hello #{player_name}! ".colorize(:yellow)
+    console.tell "Hello #{player_name}! "
   end
 
   def choose_game
@@ -38,7 +37,7 @@ class Game
       play_again = console.ask("Do you want to play again? (y/n)")
     end while play_again == 'y'
 
-    puts "Thanks for playing!".colorize(:yellow)
+    console.tell "Thanks for playing!"
   end
 
 end

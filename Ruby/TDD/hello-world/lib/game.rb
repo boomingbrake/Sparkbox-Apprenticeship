@@ -1,9 +1,8 @@
-require "colorize"
+require_relative "shell_console"
 require_relative "moo_oink_game"
 require_relative "name_game"
 require_relative "number_game"
-require_relative "shell_console"
-require_relative "randomizable"
+require_relative "bowling_game"
 
 
 class Game
@@ -12,7 +11,7 @@ class Game
   attr_reader :games, :console
 
   def initialize(console = ShellConsole.new)
-    @games = [ NameGame.new(console),NumberGame.new(console), MooOink.new(console)]
+    @games = [ NameGame.new(console), NumberGame.new(console), MooOinkGame.new(console), BowlingGame.new(console)]
     @console = console
   end
 
@@ -29,7 +28,6 @@ class Game
     games[option_num.to_i].play player_name
   end
 
-
   def play
     greet
 
@@ -38,12 +36,7 @@ class Game
       play_again = console.ask("Do you want to play again? (y/n)")
     end while play_again == 'y'
 
-    puts "Thanks for playing!".colorize(:yellow)
+    console.tell "Thanks for playing!"
   end
 
 end
-
-  # game play code below
-  #
-  # game = Game.new
-  # game.play
