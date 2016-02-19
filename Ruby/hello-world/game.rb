@@ -1,27 +1,34 @@
-require "./moo_oink"
-require "./name_game"
-require "./number_game"
-require "./shell_console"
-require "./randomizable"
+require_relative "moo_oink"
+require_relative "name_game"
+require_relative "number_game"
+require_relative "shell_console"
+require_relative "randomizable"
 
 
 class Game
 
-  attr_accessor :player_name
   attr_reader :games, :console
 
   def initialize(console = ShellConsole.new)
     @games = [ NameGame.new(console),NumberGame.new(console), MooOink.new(console)]
     @console = console
+    @players = []
   end
 
   # gets name and greets
   def greet
-    self.player_name = console.ask "Enter Name: "
-    console.tell "Hello #{player_name}! "
+    console.tell "Welcome to the Game of Games!! "
+    get_players
   end
 
-  def choose_game
+  def get_players
+    begin
+      @players << console.ask("Name of Player:")
+      add_more = console.ask("Add more?(y/n)")
+    end while add_more.downcase == 'y'
+  end
+
+  def choose_game(player_name)
     choose_game_message = "What game do you want to play?\n"
     games.each_with_index {|game, i| choose_game_message << "#{i}: #{game.name}\n"}
     option_num = console.ask choose_game_message
@@ -33,16 +40,14 @@ class Game
     greet
 
     begin
-      choose_game
-      play_again = console.ask("Do you want to play again? (y/n)")
+      @players.each do |player|
+        console.tell("Ok, #{player} you're up!")
+        choose_game player
+      end
+      play_again = console.ask("Round complete. Play another round? (y/n)")
     end while play_again == 'y'
 
-    console.tell "Thanks for playing!"
+    console.tell "Thanks for playing! Byyyyyye"
   end
 
 end
-
-  # game play code below
-
-  game = Game.new
-  game.play

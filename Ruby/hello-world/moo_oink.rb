@@ -1,4 +1,4 @@
-require "./randomizable"
+require_relative "randomizable"
 
 # guess moo or oink
 class MooOink

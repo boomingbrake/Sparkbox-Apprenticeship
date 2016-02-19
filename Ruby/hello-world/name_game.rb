@@ -1,4 +1,5 @@
-require "./randomizable"
+require_relative "randomizable"
+
 class NameGame
   include Randomizable
   attr_reader :console
