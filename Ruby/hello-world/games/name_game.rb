@@ -1,4 +1,4 @@
-require_relative "randomizable"
+require_relative "../randomizable"
 
 class NameGame
   include Randomizable

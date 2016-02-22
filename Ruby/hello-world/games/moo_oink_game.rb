@@ -1,7 +1,7 @@
-require_relative "randomizable"
+require_relative "../randomizable"
 
 # guess moo or oink
-class MooOink
+class MooOinkGame
   include Randomizable
   attr_reader :console
 
