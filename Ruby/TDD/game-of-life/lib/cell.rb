@@ -10,9 +10,17 @@ class Cell
   end
 
   def get_new_state
+
     new_state = state
-    new_state = "_" if tot_living_neighbors < 2 || tot_living_neighbors > 3
-    new_state = "*" if tot_living_neighbors == 2 || tot_living_neighbors == 3
+    #under population
+    new_state = "_" if tot_living_neighbors < 2
+    #over population
+    new_state = "_" if tot_living_neighbors > 3
+    #survivor
+    new_state = "*" if tot_living_neighbors == 2 && state == "*"
+    #reproduction
+    new_state = "*" if tot_living_neighbors == 3
+
     new_state
   end
 
