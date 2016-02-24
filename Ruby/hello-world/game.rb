@@ -17,7 +17,19 @@ class Game
     play
   end
 
-  private
+  def play
+    greet
+    round = 1
+    begin
+      @players.each do |player|
+        @console.tell("Ok, #{player} you're up!")
+        choose_game player
+      end
+      play_again = @console.ask("Round #{round} complete. Play another round? (y/n)")
+      round += 1
+    end while play_again == 'y'
+    @console.tell "Thanks for playing! Byyyyyye"
+  end
 
   def greet
     @console.tell "Welcome to the Game of Games!! "
@@ -38,20 +50,7 @@ class Game
     @games[option_num.to_i].play player_name
   end
 
-  def play
-    greet
-    round = 1
-    begin
-      @players.each do |player|
-        @console.tell("Ok, #{player} you're up!")
-        choose_game player
-      end
-      play_again = @console.ask("Round #{round} complete. Play another round? (y/n)")
-      round += 1
-    end while play_again == 'y'
-    @console.tell "Thanks for playing! Byyyyyye"
-  end
-
 end
 
-Game.new(available_games)
+game_of_games = Game.new(available_games)
+game_of_games.play
