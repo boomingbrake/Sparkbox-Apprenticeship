@@ -14,7 +14,10 @@ class Game
     @games = available_games
     @console = console
     @players = []
+<<<<<<< HEAD
+=======
     play
+>>>>>>> fdd56a8520fd543b9c20c8d8e1496c4c144ff923
   end
 
   def play
@@ -22,6 +25,15 @@ class Game
     round = 1
     begin
       @players.each do |player|
+<<<<<<< HEAD
+        @console.tell("\nOk, #{player} you're up!")
+        choose_game player
+      end
+      play_again = @console.ask("\nRound #{round} complete. Play another round? (y/n)")
+      round += 1
+    end while play_again == 'y'
+    @console.tell "\nThanks for playing! Byyyyyye"
+=======
         @console.tell("Ok, #{player} you're up!")
         choose_game player
       end
@@ -29,6 +41,7 @@ class Game
       round += 1
     end while play_again == 'y'
     @console.tell "Thanks for playing! Byyyyyye"
+>>>>>>> fdd56a8520fd543b9c20c8d8e1496c4c144ff923
   end
 
   def greet
