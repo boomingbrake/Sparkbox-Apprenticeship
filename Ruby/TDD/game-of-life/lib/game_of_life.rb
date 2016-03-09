@@ -1,42 +1,25 @@
 
+require_relative "navigator"
+require_relative "runner"
+
 class GameOfLife
-
-  attr_reader :next_generation, :board
-  def initialize(game_board_of_cells)
-    @next_generation = Array.new
-    @board = game_board_of_cells
+  def initialize(grid, life=1, death=0)
+    @grid = grid
+    @life = life
+    @death = death
   end
 
-  def analyze_grid_state_create_next
-
-    generated_life = Array.new
-    board.each do |board_cell|
-
-      board_cell.tot_living_neighbors += 1 if have_live_cell_at(board_cell.row, board_cell.column - 1) == "*"
-      board_cell.tot_living_neighbors += 1 if have_live_cell_at(board_cell.row, board_cell.column + 1) == "*"
-
-    #north neighBROS
-      board_cell.tot_living_neighbors += 1 if have_live_cell_at(board_cell.row - 1, board_cell.column) == "*"
-      board_cell.tot_living_neighbors += 1 if have_live_cell_at(board_cell.row - 1, board_cell.column - 1) == "*"
-      board_cell.tot_living_neighbors += 1 if have_live_cell_at(board_cell.row - 1, board_cell.column + 1) == "*"
-
-    #south neighBROS
-      board_cell.tot_living_neighbors += 1 if have_live_cell_at(board_cell.row + 1, board_cell.column) == "*"
-      board_cell.tot_living_neighbors += 1 if have_live_cell_at(board_cell.row + 1,board_cell.column - 1) == "*"
-      board_cell.tot_living_neighbors += 1 if have_live_cell_at(board_cell.row + 1, board_cell.column + 1) == "*"
-
-      generated_life << [board_cell.row, board_cell.column, board_cell.get_new_state]
+  def get_next_generation
+    next_grid = []
+    @grid.each_with_index do |row, x|
+      created_row = []
+      row.each_with_index do |value, y|
+        current_cell = navigator([x,y], @grid)
+        new_state = runner(current_cell, @grid, @life, @death)
+        created_row << new_state
+      end
+      next_grid << created_row
     end
-
-    generated_life
+    return next_grid
   end
-
-
-  def have_live_cell_at(row, column)
-    board.each do |board_cell|
-      return board_cell.state if board_cell.row == row && board_cell.column == column
-    end
-  end
-
-
 end
