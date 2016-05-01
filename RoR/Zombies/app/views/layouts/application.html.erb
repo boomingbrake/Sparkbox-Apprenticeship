@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+ <head>
+ <title>Twitter for Zombies</title>
+ </head>
+ <body>
+ <img src="/images/twitter.png" />
+ <% if flash[:notice] %>
+ <div id="notice">
+   <%= flash[:notice] %>
+ </div>
+ <% end %>
+ <%= yield %>
+ </body>
+ </html>
