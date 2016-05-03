@@ -1,0 +1,8 @@
+colors:
+  primary:
+    Black: "rgb(0,0,0)"
+    Dark Grey: "rgb(51,51,51)"
+    Light Grey: "rgb(153,153,153)"
+  secondary:
+    Yellow: "rgb(255,255,0)"
+    white: "rgb(255,255,255)"
