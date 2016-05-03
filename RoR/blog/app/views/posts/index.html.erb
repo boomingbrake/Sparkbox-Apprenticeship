@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="main__head">Daily Themes</h1>
+
+    <% @posts.each do |post| %>
+      <section class="section__container">
+        <h2 clas="section__head"><%= post.title %></h2>
+        <p><%= post.content %></p>
+        <%= link_to 'Show', post %>
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </section>
+    <% end %>
+
+<p>
+  <%= link_to 'New Post', new_post_path %>
+  <%= link_to 'Back', posts_path %>
+</p>

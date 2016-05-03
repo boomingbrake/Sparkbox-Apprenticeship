@@ -1,0 +1,9 @@
+
+<section class="section__container">
+  <p>
+    <%= comment.body %>
+  </p>
+</section>
+<%= link_to 'Delete', [comment.post, comment],
+             method: :delete,
+             data: { confirm: 'Are you sure?' } %>

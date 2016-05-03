@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<h2 class="main__head--sub">
+  <%= @post.title %>
+</h2>
+
+<h2 class="main__head--sub">
+  <%= @post.content %>
+</h2>
+
+<div id="tabRight" class="tab right is-closed bounce">
+      </div>
+      <aside id="tabElementRight" class="tab__element right">
+
+<h2 class="section__head">Comments</h2>
+<%= render @post.comments %>
+</section>
+
+<h2 class="section__head">Add a comment:</h2>
+<%= render 'comments/form' %>
+</aside>
+
+
+
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
